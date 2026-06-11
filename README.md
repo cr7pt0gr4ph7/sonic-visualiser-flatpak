@@ -23,5 +23,5 @@ Use the following command after checking out the repository to build & install t
 (requires [Flatpak Builder][flatpak-builder] to be [installed][flatpak-builder-install]):
 
 ```bash
-flatpak-builder --force-clean --user --install-deps-from=flathub --install install io.github.cr7pt0gr4ph7.flatpaks.sonic-visusaliser/io.github.cr7pt0gr4ph7.flatpaks.sonic-visusaliser.yml
+flatpak-builder --force-clean --user --install-deps-from=flathub --install install io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser/io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser.yml
 ```
