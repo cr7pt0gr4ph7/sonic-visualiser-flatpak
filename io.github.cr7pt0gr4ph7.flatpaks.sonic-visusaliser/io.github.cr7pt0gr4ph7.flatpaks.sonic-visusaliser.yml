@@ -1,0 +1,76 @@
+app-id: io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: /usr/bin/sonic-visualizer
+finish-args:
+  # IF WINDOW_MANAGER == X11
+  # X11 + XShm access
+  # - --share=ipc
+  # - --socket=x11
+  # ELSIF WiNDOW_MANAGER == WAYLAND
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # ENDIF
+  # Needs to talk to the network
+  - --share=network
+  - --talk-name=com.canonical.dbusmenu
+  - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.Flatpak.*
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/man
+  - '*.a'
+  - '*.la'
+modules:
+  - name: sonic-visualiser
+    buildsystem: simple
+    build-commands:
+      - unappimage appimage
+      - rm -f appimage
+      - |
+        for s in 16 32 48 64 128 256 512; do
+          install -Dm644 ${s}.png /app/share/icons/hicolor/${s}x${s}/apps/${FLATPAK_ID}.png
+        done
+      - install -Dm644 squashfs-root/sonic-visualiser.desktop /app/share/applications/$FLATPAK_ID.desktop
+      - install -Dm644 squashfs-root/sonic-visualiser.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - desktop-file-edit --set-icon=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
+      - rm -f squashfs-root/{AppRun,.DirIcon,sonic-visualiser.desktop,sonic-visualiser.svg,sv-icon.svg}
+      - mv -t /app/lib squashfs-root/usr/lib/*
+      - mv -t /app/bin squashfs-root/usr/bin/*
+      - rm -rf squashfs-root/usr
+      - rmdir squashfs-root
+    sources:
+      - type: file
+        dest-filename: appimage
+        url: https://github.com/sonic-visualiser/sonic-visualiser/releases/download/sv_v4.5.1/SonicVisualiser-4.5.1-x86_64.AppImage
+        sha256: c6aeb033a81b851d8c59b571f16650649b3b912bc024204322ff7b3b39e100d9
+        # size: 0
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/sonic-visualiser/sonic-visualiser/releases/latest
+          tag-query: .tag_name
+          version-query: "$tag | sub(\"^jq-\"; \"\")"
+          timestamp-query: .published_at
+      # - type: file
+      #   path: io.github.cr7pt0gr4ph7.flatpaks.fontbase.desktop
+      - type: file
+        path: icons/16.png
+      - type: file
+        path: icons/32.png
+      - type: file
+        path: icons/48.png
+      - type: file
+        path: icons/64.png
+      - type: file
+        path: icons/128.png
+      - type: file
+        path: icons/256.png
+      - type: file
+        path: icons/512.png
+    modules:
+      - ../shared-modules/unappimage/unappimage.json
