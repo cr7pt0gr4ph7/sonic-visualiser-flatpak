@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ matrix.branch }}
 
-      - uses: docker://ghcr.io/flathub-infra/flatpak-external-data-checker:latest
+      - uses: docker://ghcr.io/flathub-infra/flatpak-external-data-checker:latest@sha256:78c11b8402561010bf340a112cd339bee7013c720d65581854007bc6b05f9708
         env:
           GIT_AUTHOR_NAME: Flatpak External Data Checker
           GIT_COMMITTER_NAME: Flatpak External Data Checker
