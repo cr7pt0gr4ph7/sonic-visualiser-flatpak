@@ -57,7 +57,7 @@ jobs:
           EOF
 
       - name: Build
-        uses: andyholmes/flatter@adcf29af6c60fefb5fda4ab1c059ed8a022a69f0
+        uses: andyholmes/flatter@ba9d3856bb0e59b43ba4684fe72128003f1b7706
         with:
           files: |
             io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser/io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser.yml
