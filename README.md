@@ -1,6 +1,6 @@
 # sonic-visualizer-flatpak
 Packages the [Sonic Visualiser] application (source code available on [GitHub]) as a [Flatpak].
-Inspired by [tinywrkb/flatpaks] and based on the [andyholmes/flatter] GitHub action and [flatpak-builder].
+Inspired by [tinywrkb/flatpaks] and based on the [andyholmes/flatter] GitHub action and [flatpak-builder-repo].
 
 Not tested in any meaningful way except for "works on my machine", so use at your own discretion.
 
@@ -13,4 +13,15 @@ Not tested in any meaningful way except for "works on my machine", so use at you
 
 [tinywrkb/flatpaks]: https://github.com/tinywrkb/flatpaks
 [andyholmes/flatter]: https://github.com/andyholmes/flatter
-[flatpak-builder]: https://github.com/flatpak/flatpak-builder
+[flatpak-builder]: https://docs.flatpak.org/en/latest/flatpak-builder.html
+[flatpak-builder-install]: https://docs.flatpak.org/en/latest/first-build.html
+[flatpak-builder-repo]: https://github.com/flatpak/flatpak-builder
+
+## Building locally
+
+Use the following command after checking out the repository to build & install the Flatpak locally
+(requires [Flatpak Builder][flatpak-builder] to be [installed][flatpak-builder-install]):
+
+```bash
+flatpak-builder --force-clean --user --install-deps-from=flathub --install install io.github.cr7pt0gr4ph7.flatpaks.sonic-visusaliser/io.github.cr7pt0gr4ph7.flatpaks.sonic-visusaliser.yml
+```
