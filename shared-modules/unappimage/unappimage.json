@@ -8,9 +8,9 @@
   "sources": [
     {
       "type": "git",
-      "url": "https://github.com/refi64/unappimage",
+      "url": "https://github.com/cr7pt0gr4ph7/unappimage",
       "branch": "master",
-      "commit": "d7f86f2a0d7ec3a69211125207d5f127386b849a"
+      "commit": "bc3d05d929ad62b05680d9de8a0a82d993ebc5bb"
     }
   ]
 }
