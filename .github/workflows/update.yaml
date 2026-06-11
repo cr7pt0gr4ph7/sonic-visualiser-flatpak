@@ -33,3 +33,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: --update --never-fork io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser/io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser.yml
+
+      - uses: docker://ghcr.io/flathub-infra/flatpak-external-data-checker:latest@sha256:78c11b8402561010bf340a112cd339bee7013c720d65581854007bc6b05f9708
+        env:
+          GIT_AUTHOR_NAME: Flatpak External Data Checker
+          GIT_COMMITTER_NAME: Flatpak External Data Checker
+          # email sets "github-actions[bot]" as commit author, see https://github.community/t/github-actions-bot-email-address/17204/6
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --update --never-fork shared-modules/unappimage/unappimage.json
