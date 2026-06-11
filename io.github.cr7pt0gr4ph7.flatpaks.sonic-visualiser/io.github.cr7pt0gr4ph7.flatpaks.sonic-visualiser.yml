@@ -1,7 +1,7 @@
 app-id: io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser
-runtime: org.freedesktop.Platform
-runtime-version: '23.08'
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+runtime-version: '6.10'
+sdk: org.kde.Sdk
 command: /app/bin/sonic-visualiser
 finish-args:
   # IF WINDOW_MANAGER == X11
