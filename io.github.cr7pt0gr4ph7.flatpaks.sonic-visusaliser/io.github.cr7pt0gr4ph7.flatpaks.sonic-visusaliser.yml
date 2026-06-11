@@ -57,7 +57,7 @@ modules:
           version-query: "$tag | sub(\"^jq-\"; \"\")"
           timestamp-query: .published_at
       # - type: file
-      #   path: io.github.cr7pt0gr4ph7.flatpaks.fontbase.desktop
+      #   path: io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser.desktop
       - type: file
         path: icons/16.png
       - type: file
