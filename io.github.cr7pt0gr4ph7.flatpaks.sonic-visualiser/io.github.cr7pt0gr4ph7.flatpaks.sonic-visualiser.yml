@@ -53,9 +53,8 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/sonic-visualiser/sonic-visualiser/releases/latest
-          tag-query: .tag_name
-          version-query: "$tag | sub(\"^jq-\"; \"\")"
-          timestamp-query: .published_at
+          version-query: ".tag_name | sub(\"^sv_v\"; \"\")"
+          url-query: ".assets[] | select(.name==\"SonicVisualiser-\" + $version + \"-x86_64.AppImage\") | .browser_download_url"
       # - type: file
       #   path: io.github.cr7pt0gr4ph7.flatpaks.sonic-visualiser.desktop
       - type: file
